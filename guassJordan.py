@@ -33,10 +33,13 @@ def gaussJordan(matrix, fila):#No es necesario saber el tamaño de la columna
 		createPivot(matrix, i)
 		for row in range(fila):
 			if row != i:
+				sumRow(matrix, row, i, -1*Fraction(matrix[row][i]))
+				'''
 				if matrix[row][i] >= 0:
 					sumRow(matrix, row, i, -1*Fraction(matrix[row][i]))
 				else:
 					sumRow(matrix, row, i, Fraction(matrix[row][i]))
+				'''
 
 def selectPivot(matrix):
 	rowNum = 0
