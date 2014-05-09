@@ -34,12 +34,6 @@ def gaussJordan(matrix, fila):#No es necesario saber el tamaño de la columna
 		for row in range(fila):
 			if row != i:
 				sumRow(matrix, row, i, -1*Fraction(matrix[row][i]))
-				'''
-				if matrix[row][i] >= 0:
-					sumRow(matrix, row, i, -1*Fraction(matrix[row][i]))
-				else:
-					sumRow(matrix, row, i, Fraction(matrix[row][i]))
-				'''
 
 def selectPivot(matrix):
 	rowNum = 0
@@ -78,7 +72,7 @@ def createMatrixFromFile(filename):
 		    x = y = 0
 		    for row in reader:
 		    	for val in row:
-		    		matrix[x][y] = Fraction(float(val))
+		    		matrix[x][y] = Fraction(val)
 		    		y += 1
 		    	x += 1
 		    	y = 0
@@ -86,13 +80,5 @@ def createMatrixFromFile(filename):
 			sys.exit('file {}, line {}: {}'.format(filename, reader.line_num, e))
 	gaussJordan(matrix, fila)
 
-###################################
-#File format:
-#2,3
-#8,3,4
-#4,1,6
-####################################
-
-#filename = input("Write the file name:")
-matrix = createMatrixFromFile("matrix.txt")
-
+filename = input("Write the file name:")
+matrix = createMatrixFromFile(filename)
